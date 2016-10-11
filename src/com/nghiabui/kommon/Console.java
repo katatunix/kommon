@@ -3,6 +3,10 @@ package com.nghiabui.kommon;
 import static com.nghiabui.kommon.Tabs.*;
 
 public class Console {
+	
+	public void info(String str) {
+		java.lang.System.out.print(str);
+	}
 
 	public void infoln(String line) {
 		infoln(0, line);
