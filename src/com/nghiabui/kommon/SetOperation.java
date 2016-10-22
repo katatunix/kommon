@@ -50,15 +50,21 @@ public class SetOperation {
 		return result;
 	}
 	
-	public static <T> Set<T> union(Set<T> left, Set<T> right) {
-		final Set<T> union = new HashSet<>(left);
-		union.addAll(right);
-		return union;
+	public static <T> Set<T> union(Collection<Set<T>> sets) {
+		final Set<T> result = new HashSet<>();
+		for (Set<T> set : sets) {
+			result.addAll(set);
+		}
+		return result;
 	}
 	
-	public static <T> Set<T> union(Collection<Set<T>> list) {
-		final Optional<Set<T>> result = list.stream().reduce(SetOperation::union);
-		return result.isPresent() ? result.get() : Collections.EMPTY_SET;
+	@SafeVarargs
+	public static <T> Set<T> union(Set<T>... sets) {
+		final Set<T> result = new HashSet<>();
+		for (Set<T> set : sets) {
+			result.addAll(set);
+		}
+		return result;
 	}
 	
 	public static <T> boolean isSub(Set<T> set1, Set<T> set2) {
